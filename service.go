@@ -17,7 +17,7 @@ type Service struct {
 }
 
 func init() {
-	togo.RegisterProviderFunc("authz", togo.PriorityService, func(k *togo.Kernel) error {
+	togo.RegisterProviderFunc("authz", togo.PriorityLate+10, func(k *togo.Kernel) error {
 		s := &Service{k: k}
 		k.Set("authz", s)
 		if k.Router != nil {
